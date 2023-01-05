@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="StockDBModelStoreContainer" CdmEntityContainer="StockDBEntities">
+    <EntitySetMapping Name="tb_pbr">
+      <EntityTypeMapping TypeName="StockDBModel.tb_pbr">
+        <MappingFragment StoreEntitySet="tb_pbr">
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Cht_cat" ColumnName="Cht_cat" />
+          <ScalarProperty Name="Transaction" ColumnName="Transaction" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Volume" ColumnName="Volume" />
+          <ScalarProperty Name="Total_amount" ColumnName="Total_amount" />
+          <ScalarProperty Name="Updown" ColumnName="Updown" />
+          <ScalarProperty Name="Updown_percent" ColumnName="Updown_percent" />
+          <ScalarProperty Name="Bps_price" ColumnName="Bps_price" />
+          <ScalarProperty Name="Pbr_percent" ColumnName="Pbr_percent" />
+          <ScalarProperty Name="Flow_L1" ColumnName="Flow_L1" />
+          <ScalarProperty Name="Flow_L2" ColumnName="Flow_L2" />
+          <ScalarProperty Name="Flow_L3" ColumnName="Flow_L3" />
+          <ScalarProperty Name="Flow_L4" ColumnName="Flow_L4" />
+          <ScalarProperty Name="Flow_L5" ColumnName="Flow_L5" />
+          <ScalarProperty Name="Flow_L6" ColumnName="Flow_L6" />
+          <ScalarProperty Name="url" ColumnName="url" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_per">
+      <EntityTypeMapping TypeName="StockDBModel.tb_per">
+        <MappingFragment StoreEntitySet="tb_per">
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Cht_cat" ColumnName="Cht_cat" />
+          <ScalarProperty Name="Transaction" ColumnName="Transaction" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Volume" ColumnName="Volume" />
+          <ScalarProperty Name="Total_amount" ColumnName="Total_amount" />
+          <ScalarProperty Name="Updown" ColumnName="Updown" />
+          <ScalarProperty Name="Updown_percent" ColumnName="Updown_percent" />
+          <ScalarProperty Name="Eps_price" ColumnName="Eps_price" />
+          <ScalarProperty Name="Per_percent" ColumnName="Per_percent" />
+          <ScalarProperty Name="Flow_L1" ColumnName="Flow_L1" />
+          <ScalarProperty Name="Flow_L2" ColumnName="Flow_L2" />
+          <ScalarProperty Name="Flow_L3" ColumnName="Flow_L3" />
+          <ScalarProperty Name="Flow_L4" ColumnName="Flow_L4" />
+          <ScalarProperty Name="Flow_L5" ColumnName="Flow_L5" />
+          <ScalarProperty Name="Flow_L6" ColumnName="Flow_L6" />
+          <ScalarProperty Name="url" ColumnName="url" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_stock">
+      <EntityTypeMapping TypeName="StockDBModel.tb_stock">
+        <MappingFragment StoreEntitySet="tb_stock">
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Market" ColumnName="Market" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="MA5" ColumnName="MA5" />
+          <ScalarProperty Name="MA10" ColumnName="MA10" />
+          <ScalarProperty Name="MA60" ColumnName="MA60" />
+          <ScalarProperty Name="MA120" ColumnName="MA120" />
+          <ScalarProperty Name="Indicators" ColumnName="Indicators" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

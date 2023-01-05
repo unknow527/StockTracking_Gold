@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="StockDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tb_pbr">
+    <Key>
+      <PropertyRef Name="Date" />
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Date" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Id" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Cht_cat" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Transaction" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Volume" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Total_amount" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Updown" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Updown_percent" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Bps_price" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Pbr_percent" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Flow_L1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Flow_L2" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Flow_L3" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Flow_L4" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Flow_L5" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Flow_L6" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="url" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tb_per">
+    <Key>
+      <PropertyRef Name="Date" />
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Date" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Id" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Cht_cat" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Transaction" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Volume" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Total_amount" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Updown" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Updown_percent" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Eps_price" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Per_percent" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Flow_L1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Flow_L2" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Flow_L3" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Flow_L4" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Flow_L5" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Flow_L6" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="url" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tb_stock">
+    <Key>
+      <PropertyRef Name="Date" />
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Date" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Market" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="MA5" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="MA10" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="MA60" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="MA120" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Indicators" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="StockDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tb_pbr" EntityType="Self.tb_pbr" />
+    <EntitySet Name="tb_per" EntityType="Self.tb_per" />
+    <EntitySet Name="tb_stock" EntityType="Self.tb_stock" />
+  </EntityContainer>
+</Schema>

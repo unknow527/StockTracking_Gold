@@ -1,0 +1,167 @@
+﻿@model IEnumerable<prjStockTracking.Models.StockViewModel>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Stock分析 - 黃金交叉</h1>
+</div>
+
+<h4>@Html.DisplayFor(modelItem => modelItem.FirstOrDefault().Market) | @Html.DisplayFor(modelItem => modelItem.FirstOrDefault().Date)</h4>
+<h4>異常訊息: @ViewBag.errorMsg</h4>
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div class="col-md-3">
+            市場別
+            <select class="form-control" name="market">
+                <option value="TSE">集中市場</option>
+                <option value="OTC">店頭市場</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            即時更新河流圖
+            <select class="form-control" name="onTime">
+                <option value="N">否</option>
+                <option value="Y">是</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            時間間隔:
+            <select class="form-control" name="gap">
+                <option value=2>2S</option>
+                <option value=4>4S</option>
+                <option value=8>8S</option>
+                <option value=16>16S</option>
+            </select>
+        </div>
+
+        <div class="col-md-3">
+            <br />
+            <input type="submit" class="btn btn-default" value="查詢">
+        </div>
+    </div>
+
+}
+<h5>預估更新時間: @ViewBag.estimatedTime 分 | 實際時間: @ViewBag.costTime 分</h5>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="table-responsive">
+    <table class="table">
+        <caption>List of stocks |  @Html.DisplayFor(modelItem => modelItem.FirstOrDefault().Market) | @Html.DisplayFor(modelItem => modelItem.FirstOrDefault().Date)</caption>
+        <thead class="table-dark">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Market)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Code)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MA5)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MA20)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MA60)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MA120)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Indicators)
+                </th>
+                <th>|</th>
+                <th>
+                    成交量
+                </th>
+                <th>
+                    成交總金額
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Bps)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Eps)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PerLevel)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PbrLevel)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Market)
+                    </td>
+                    @{
+                        string Url = "https://goodinfo.tw/tw/ShowK_ChartFlow.asp?RPT_CAT=PBR&STOCK_ID=" + Html.DisplayFor(modelItem => item.Code) + "&CHT_CAT=MONTH";
+                    }
+                    <td>
+                        <a href=@Url style="color:blue;">@Html.DisplayFor(modelItem => item.Code)</a>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MA5)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MA20)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MA60)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MA120)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Indicators)
+                    </td>
+                    <th>|</th>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Volume)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Total_amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Bps)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Eps)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PerLevel)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PbrLevel)
+                    </td>
+
+                    <td>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

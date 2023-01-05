@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="StockDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'C:\USERS\VINCE\DOWNLOADS\SLNSTOCKTRACKING_20221231\SLNSTOCKTRACKING\SLNSTOCKTRACKING\PRJSTOCKTRACKING\APP_DATA\STOCKDB.MDF.dbo.tb_pbr' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+  <EntityType Name="tb_pbr">
+    <Key>
+      <PropertyRef Name="Date" />
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Date" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Id" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Cht_cat" Type="nvarchar" MaxLength="10" />
+    <Property Name="Transaction" Type="nvarchar" MaxLength="20" />
+    <Property Name="Price" Type="nvarchar" MaxLength="10" />
+    <Property Name="Volume" Type="nvarchar" MaxLength="10" />
+    <Property Name="Total_amount" Type="nvarchar" MaxLength="10" />
+    <Property Name="Updown" Type="nvarchar" MaxLength="10" />
+    <Property Name="Updown_percent" Type="nvarchar" MaxLength="10" />
+    <Property Name="Bps_price" Type="nvarchar" MaxLength="10" />
+    <Property Name="Pbr_percent" Type="nvarchar" MaxLength="10" />
+    <Property Name="Flow_L1" Type="nvarchar" MaxLength="10" />
+    <Property Name="Flow_L2" Type="nvarchar" MaxLength="10" />
+    <Property Name="Flow_L3" Type="nvarchar" MaxLength="10" />
+    <Property Name="Flow_L4" Type="nvarchar" MaxLength="10" />
+    <Property Name="Flow_L5" Type="nvarchar" MaxLength="10" />
+    <Property Name="Flow_L6" Type="nvarchar" MaxLength="10" />
+    <Property Name="url" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'C:\USERS\VINCE\DOWNLOADS\SLNSTOCKTRACKING_20221231\SLNSTOCKTRACKING\SLNSTOCKTRACKING\PRJSTOCKTRACKING\APP_DATA\STOCKDB.MDF.dbo.tb_per' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+  <EntityType Name="tb_per">
+    <Key>
+      <PropertyRef Name="Date" />
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Date" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Id" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Cht_cat" Type="nvarchar" MaxLength="10" />
+    <Property Name="Transaction" Type="nvarchar" MaxLength="20" />
+    <Property Name="Price" Type="nvarchar" MaxLength="10" />
+    <Property Name="Volume" Type="nvarchar" MaxLength="10" />
+    <Property Name="Total_amount" Type="nvarchar" MaxLength="10" />
+    <Property Name="Updown" Type="nvarchar" MaxLength="10" />
+    <Property Name="Updown_percent" Type="nvarchar" MaxLength="10" />
+    <Property Name="Eps_price" Type="nvarchar" MaxLength="10" />
+    <Property Name="Per_percent" Type="nvarchar" MaxLength="10" />
+    <Property Name="Flow_L1" Type="nvarchar" MaxLength="10" />
+    <Property Name="Flow_L2" Type="nvarchar" MaxLength="10" />
+    <Property Name="Flow_L3" Type="nvarchar" MaxLength="10" />
+    <Property Name="Flow_L4" Type="nvarchar" MaxLength="10" />
+    <Property Name="Flow_L5" Type="nvarchar" MaxLength="10" />
+    <Property Name="Flow_L6" Type="nvarchar" MaxLength="10" />
+    <Property Name="url" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'C:\USERS\VINCE\DOWNLOADS\SLNSTOCKTRACKING_20221231\SLNSTOCKTRACKING\SLNSTOCKTRACKING\PRJSTOCKTRACKING\APP_DATA\STOCKDB.MDF.dbo.tb_stock' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+  <EntityType Name="tb_stock">
+    <Key>
+      <PropertyRef Name="Date" />
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Date" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Market" Type="nvarchar" MaxLength="10" />
+    <Property Name="Price" Type="nvarchar" MaxLength="20" />
+    <Property Name="MA5" Type="nvarchar" MaxLength="10" />
+    <Property Name="MA10" Type="nvarchar" MaxLength="10" />
+    <Property Name="MA60" Type="nvarchar" MaxLength="10" />
+    <Property Name="MA120" Type="nvarchar" MaxLength="10" />
+    <Property Name="Indicators" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="StockDBModelStoreContainer">
+    <EntitySet Name="tb_pbr" EntityType="Self.tb_pbr" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tb_pbr].[Date] AS [Date], 
+    [tb_pbr].[Id] AS [Id], 
+    [tb_pbr].[Cht_cat] AS [Cht_cat], 
+    [tb_pbr].[Transaction] AS [Transaction], 
+    [tb_pbr].[Price] AS [Price], 
+    [tb_pbr].[Volume] AS [Volume], 
+    [tb_pbr].[Total_amount] AS [Total_amount], 
+    [tb_pbr].[Updown] AS [Updown], 
+    [tb_pbr].[Updown_percent] AS [Updown_percent], 
+    [tb_pbr].[Bps_price] AS [Bps_price], 
+    [tb_pbr].[Pbr_percent] AS [Pbr_percent], 
+    [tb_pbr].[Flow_L1] AS [Flow_L1], 
+    [tb_pbr].[Flow_L2] AS [Flow_L2], 
+    [tb_pbr].[Flow_L3] AS [Flow_L3], 
+    [tb_pbr].[Flow_L4] AS [Flow_L4], 
+    [tb_pbr].[Flow_L5] AS [Flow_L5], 
+    [tb_pbr].[Flow_L6] AS [Flow_L6], 
+    [tb_pbr].[url] AS [url]
+    FROM [dbo].[tb_pbr] AS [tb_pbr]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="tb_per" EntityType="Self.tb_per" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tb_per].[Date] AS [Date], 
+    [tb_per].[Id] AS [Id], 
+    [tb_per].[Cht_cat] AS [Cht_cat], 
+    [tb_per].[Transaction] AS [Transaction], 
+    [tb_per].[Price] AS [Price], 
+    [tb_per].[Volume] AS [Volume], 
+    [tb_per].[Total_amount] AS [Total_amount], 
+    [tb_per].[Updown] AS [Updown], 
+    [tb_per].[Updown_percent] AS [Updown_percent], 
+    [tb_per].[Eps_price] AS [Eps_price], 
+    [tb_per].[Per_percent] AS [Per_percent], 
+    [tb_per].[Flow_L1] AS [Flow_L1], 
+    [tb_per].[Flow_L2] AS [Flow_L2], 
+    [tb_per].[Flow_L3] AS [Flow_L3], 
+    [tb_per].[Flow_L4] AS [Flow_L4], 
+    [tb_per].[Flow_L5] AS [Flow_L5], 
+    [tb_per].[Flow_L6] AS [Flow_L6], 
+    [tb_per].[url] AS [url]
+    FROM [dbo].[tb_per] AS [tb_per]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="tb_stock" EntityType="Self.tb_stock" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tb_stock].[Date] AS [Date], 
+    [tb_stock].[Code] AS [Code], 
+    [tb_stock].[Name] AS [Name], 
+    [tb_stock].[Market] AS [Market], 
+    [tb_stock].[Price] AS [Price], 
+    [tb_stock].[MA5] AS [MA5], 
+    [tb_stock].[MA10] AS [MA10], 
+    [tb_stock].[MA60] AS [MA60], 
+    [tb_stock].[MA120] AS [MA120], 
+    [tb_stock].[Indicators] AS [Indicators]
+    FROM [dbo].[tb_stock] AS [tb_stock]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
