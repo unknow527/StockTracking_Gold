@@ -17,6 +17,8 @@ namespace prjStockTracking.Crawler
     public class StockCrawler
     {
         private static WebClient _client = new WebClient();
+        private static HtmlDocument doc = new HtmlDocument();
+        private static MemoryStream ms = new MemoryStream();
         
         public StockCrawler(WebClient client)
         {
@@ -51,7 +53,7 @@ namespace prjStockTracking.Crawler
             driver.Close();
 
             //處理資料
-            HtmlDocument doc = new HtmlDocument();
+            //HtmlDocument doc = new HtmlDocument();
             doc.LoadHtml(html);
 
             List<StockViewModel> StockList = new List<StockViewModel>();
@@ -129,7 +131,7 @@ namespace prjStockTracking.Crawler
             driver.Close();
 
             //處理資料
-            HtmlDocument doc = new HtmlDocument();
+            //HtmlDocument doc = new HtmlDocument();
             doc.LoadHtml(html);
 
             // 目標網站的XPath、Webclient方法時要去除瀏覽器文本會自動產生tbody
@@ -224,7 +226,7 @@ namespace prjStockTracking.Crawler
 
 
             //處理資料
-            HtmlDocument doc = new HtmlDocument();
+            //HtmlDocument doc = new HtmlDocument();
             doc.LoadHtml(html);
 
             // 目標網站的XPath、去除瀏覽器文本會自動產生tbody
@@ -300,9 +302,6 @@ namespace prjStockTracking.Crawler
             }
             PerViewModel list = new PerViewModel() { Id = id, Cht_cat = cht_cat, Date = date, Transaction=transaction, Price = price, Volume=volume, Total_amount=total_amount, Updown = updown, Updown_percent = updown_percent, Eps_price = eps, Per_percent = per_percent, Flow_L1 = l1, Flow_L2 = l2, Flow_L3 = l3, Flow_L4 = l4, Flow_L5 = l5, Flow_L6 = l6, url = per_url, Flow_Level=level };
 
-            //string val = list.Aggregate((x, y) => x + "," + y);
-            //Console.WriteLine(val);
-
             return list;
         }
 
@@ -320,9 +319,9 @@ namespace prjStockTracking.Crawler
             //Console.WriteLine(new_url);
             //將網頁來源資料暫存到記憶體內
             _client.Headers.Add("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36)");
-            MemoryStream ms = new MemoryStream(_client.DownloadData(new_url));
+            ms = new MemoryStream(_client.DownloadData(new_url));
 
-            HtmlDocument doc = new HtmlDocument();
+            //HtmlDocument doc = new HtmlDocument();
             doc.Load(ms, Encoding.UTF8); // 使用 UTF8 編碼讀入 HTML
 
             // 檢查資料，將stream轉字串
@@ -422,9 +421,9 @@ namespace prjStockTracking.Crawler
             //Console.WriteLine(new_url);
             //將網頁來源資料暫存到記憶體內
             _client.Headers.Add("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36)");
-            MemoryStream ms = new MemoryStream(_client.DownloadData(new_url));
+            ms = new MemoryStream(_client.DownloadData(new_url));
 
-            HtmlDocument doc = new HtmlDocument();
+            //HtmlDocument doc = new HtmlDocument();
             doc.Load(ms, Encoding.UTF8); // 使用 UTF8 編碼讀入 HTML
 
             // 檢查資料，將stream轉字串
