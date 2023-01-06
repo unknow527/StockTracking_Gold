@@ -15,7 +15,7 @@ namespace prjStockTracking.Controllers
         List<StockViewModel> StockList = new List<StockViewModel>();
         string date = DateTime.Today.ToString();
 
-        public ActionResult Index(string market = "TSE", string onTime = "N", int gap = 4)
+        public ActionResult Index(string market = "TSE", string onTime = "N", int gap = 2)
         {
             TimeSpan timeSpan;
             DateTime start_time = DateTime.Now;
@@ -36,7 +36,7 @@ namespace prjStockTracking.Controllers
                             string stockID = i.Code;
                             string date = "MONTH";
                             // 抓GoodInfo本淨比資料
-                            Thread.Sleep(gap);
+                            Thread.Sleep(gap*1000);
                             PbrViewModel pbr_data = Crawler.StockCrawler.Get_PbrFlow(stockID, date);
                             i.Url = pbr_data.url; //GoodInfo連結
                             i.PbrLevel = pbr_data.Flow_Level; //本淨比河流LEVEL區間
@@ -46,7 +46,7 @@ namespace prjStockTracking.Controllers
                             i.FlowDate = pbr_data.Date;
                             i.Bps = pbr_data.Bps_price;
                             // 抓GoodInfo本益比資料
-                            Thread.Sleep(gap);
+                            Thread.Sleep(gap*1000);
                             PerViewModel per_data = Crawler.StockCrawler.Get_PerFlow(stockID, date);
                             i.PerLevel = per_data.Flow_Level; //本益比河流LEVEL區間
                             i.Eps = per_data.Eps_price;
