@@ -60,7 +60,7 @@
   <ItemGroup>
     <Compile Include="Applibs\StockCrawler.cs" />
     <Compile Include="Applibs\StockTrakingProcess.cs" />
-    <Compile Include="Model\BigStock.cs" />
+    <Compile Include="Model\StockInfo.cs" />
     <Compile Include="Model\Gold.cs" />
     <Compile Include="Model\Pbr.cs" />
     <Compile Include="Model\Per.cs" />

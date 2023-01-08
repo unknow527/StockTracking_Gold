@@ -12,6 +12,8 @@
 
     public class 黃金交叉Dto
     {
+        public string Date { get; set; }
+        public string Market { get; set; } //市場別
         public string Code { get; set; }
         public string Name { get; set; }
         public string Price { get; set; }
@@ -20,8 +22,6 @@
         public string MA60 { get; set; }
         public string MA120 { get; set; }
         public string Indicators { get; set; } //指標
-        public string Market { get; set; } //市場別
-        public string Date { get; set; }
     }
 
     public class 本益比本淨比河流Dto

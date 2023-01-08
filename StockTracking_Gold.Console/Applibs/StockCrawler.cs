@@ -51,9 +51,10 @@ namespace StockTracking_Gold.Ap.Applibs
             //HtmlDocument doc = new HtmlDocument();
             doc.LoadHtml(html);
 
+            string xpath;
             for (int tb_count = 1; tb_count < 6; tb_count++)
             {
-                string xpath = "//*[@id=\"ctl00_ContentPlaceHolder1_UpdatePanel1\"]/div[1]/div/table[" + tb_count + "]";
+                xpath = "//*[@id=\"ctl00_ContentPlaceHolder1_UpdatePanel1\"]/div[1]/div/table[" + tb_count + "]";
                 int tr_count = 1;
                 string indicators = "";
                 HtmlNodeCollection tb_var = doc.DocumentNode.SelectNodes(xpath);

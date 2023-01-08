@@ -12,13 +12,13 @@ namespace StockTracking_Gold.Ap
             var t1 = Task.Run(() =>
             {
                 StockTrakingProcess process = new StockTrakingProcess();
-                process.StartStockCrawler("TSE", "Y", 8);
+                process.StartStockCrawler("TSE", "N", 8);
             });
             Thread.Sleep(4000);
             var t2 = Task.Run(() =>
             {
                 StockTrakingProcess process = new StockTrakingProcess();
-                process.StartStockCrawler("OTC", "Y", 8);
+                process.StartStockCrawler("OTC", "N", 8);
             });
 
             Task.WaitAll(t1, t2);
