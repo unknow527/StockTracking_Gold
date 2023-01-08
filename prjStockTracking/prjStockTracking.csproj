@@ -142,13 +142,15 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Crawler\StockCrawler.cs" />
+    <Compile Include="Crawler\StockTrakingProcess.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\PbrViewModel.cs" />
-    <Compile Include="Models\GoldViewModel.cs" />
-    <Compile Include="Models\PerViewModel.cs" />
-    <Compile Include="Models\StockViewModel.cs" />
+    <Compile Include="Models\Pbr.cs" />
+    <Compile Include="Models\Gold.cs" />
+    <Compile Include="Models\Per.cs" />
+    <Compile Include="Models\StockInfo.cs" />
+    <Compile Include="ViewModels\StockViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

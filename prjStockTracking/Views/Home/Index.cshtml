@@ -1,4 +1,4 @@
-﻿@model IEnumerable<prjStockTracking.Models.StockViewModel>
+﻿@model IEnumerable<prjStockTracking.ViewModels.StockViewModel>
 @{
     ViewBag.Title = "Home Page";
 }
@@ -29,10 +29,10 @@
         <div class="col-md-3">
             時間間隔:
             <select class="form-control" name="gap">
-                <option value=2>2S</option>
                 <option value=4>4S</option>
                 <option value=8>8S</option>
                 <option value=16>16S</option>
+                <option value=32>32S</option>
             </select>
         </div>
 
@@ -45,9 +45,6 @@
 }
 <h5>預估更新時間: @ViewBag.estimatedTime 分 | 實際時間: @ViewBag.costTime 分</h5>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <div class="table-responsive">
     <table class="table">
         <caption>List of stocks |  @Html.DisplayFor(modelItem => modelItem.FirstOrDefault().Market) | @Html.DisplayFor(modelItem => modelItem.FirstOrDefault().Date)</caption>
