@@ -1,4 +1,5 @@
-﻿using StockTracking_Gold.Ap.Applibs;
+﻿using Newtonsoft.Json;
+using StockTracking_Gold.Ap.Applibs;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -9,19 +10,23 @@ namespace StockTracking_Gold.Ap
     {
         static void Main(string[] args)
         {
+            // t1、t2非同步執行
             var t1 = Task.Run(() =>
             {
                 StockTrakingProcess process = new StockTrakingProcess();
-                process.StartStockCrawler("TSE", "N", 8);
+                //process.StartStockCrawler("TSE", "Y", 8);
+                var rs = JsonConvert.SerializeObject(process.StartStockCrawler("TSE", "Y", 4), Formatting.Indented);
+                Console.WriteLine(rs);
             });
             Thread.Sleep(4000);
-            var t2 = Task.Run(() =>
-            {
-                StockTrakingProcess process = new StockTrakingProcess();
-                process.StartStockCrawler("OTC", "N", 8);
-            });
+            //var t2 = Task.Run(() =>
+            //{
+            //    StockTrakingProcess process = new StockTrakingProcess();
+            //    var rs = JsonConvert.SerializeObject(process.StartStockCrawler("OTC", "Y", 4), Formatting.Indented);
+            //    Console.WriteLine(rs);
+            //});
 
-            Task.WaitAll(t1, t2);
+            //Task.WaitAll(t1, t2); // 等待t1 & t2都結束後才繼續
 
             Console.ReadLine();
         }

@@ -39,7 +39,7 @@ namespace StockTracking_Gold.Ap.Applibs
             //操作瀏覽器篩選功能
             driver.Navigate().GoToUrl(url);
 
-            Thread.Sleep(500);
+            Thread.Sleep(1000);
             var select = driver.FindElement(By.Id("ctl00_ContentPlaceHolder1_D1")); //下拉選單
             var selectElement = new SelectElement(select);
             selectElement.SelectByValue(market); // market = "TSE" or "OTC"
@@ -139,7 +139,7 @@ namespace StockTracking_Gold.Ap.Applibs
             // 表頭
             string id = STOCK_ID;
             string cht_cat = CHT_CAT;
-            string date = doc.DocumentNode.SelectSingleNode("/html/body/table[2]/tbody/tr/td[3]/table[1]/tbody/tr/td[1]/table/tbody/tr[1]/th/table/tbody/tr/td[2]/nobr").InnerText.ToString();
+            string date = doc.DocumentNode.SelectSingleNode("/html/body/table[2]/tbody/tr/td[3]/table[1]/tbody/tr/td[1]/table/tbody/tr[1]/th/table/tbody/tr/td[last()]/nobr").InnerText.ToString();
             string volume = doc.DocumentNode.SelectSingleNode("/html/body/table[2]/tbody/tr/td[3]/table[1]/tbody/tr/td[1]/table/tbody/tr[5]/td[1]").InnerText.ToString();
             string total_amount = doc.DocumentNode.SelectSingleNode("/html/body/table[2]/tbody/tr/td[3]/table[1]/tbody/tr/td[1]/table/tbody/tr[5]/td[2]/nobr").InnerText.Replace("&nbsp;", "").ToString();
             // Table         
@@ -233,7 +233,7 @@ namespace StockTracking_Gold.Ap.Applibs
             string id = STOCK_ID;
             string cht_cat = CHT_CAT;
 
-            string date = doc.DocumentNode.SelectSingleNode("/html/body/table[2]/tbody/tr/td[3]/table[1]/tbody/tr/td[1]/table/tbody/tr[1]/th/table/tbody/tr/td[2]/nobr").InnerText.ToString();
+            string date = doc.DocumentNode.SelectSingleNode("/html/body/table[2]/tbody/tr/td[3]/table[1]/tbody/tr/td[1]/table/tbody/tr[1]/th/table/tbody/tr/td[last()]/nobr").InnerText.ToString();
             string volume = doc.DocumentNode.SelectSingleNode("/html/body/table[2]/tbody/tr/td[3]/table[1]/tbody/tr/td[1]/table/tbody/tr[5]/td[1]").InnerText.ToString();
             string total_amount = doc.DocumentNode.SelectSingleNode("/html/body/table[2]/tbody/tr/td[3]/table[1]/tbody/tr/td[1]/table/tbody/tr[5]/td[2]/nobr").InnerText.Replace("&nbsp;", "").ToString();
             // table
@@ -329,7 +329,7 @@ namespace StockTracking_Gold.Ap.Applibs
             string cht_cat = CHT_CAT;
 
             // 表頭資料
-            string date = "/html/body/table[2]/tbody/tr/td[3]/table[1]/tbody/tr/td[1]/table/tbody/tr[1]/th/table/tbody/tr/td[2]/nobr";
+            string date = "/html/body/table[2]/tbody/tr/td[3]/table[1]/tbody/tr/td[1]/table/tbody/tr[1]/th/table/tbody/tr/td[last()]/nobr";
             date = doc.DocumentNode.SelectSingleNode(date.Replace("/tbody", "")).InnerText.ToString();
 
             string volume = "/html/body/table[2]/tbody/tr/td[3]/table[1]/tbody/tr/td[1]/table/tbody/tr[5]/td[1]";
@@ -430,7 +430,7 @@ namespace StockTracking_Gold.Ap.Applibs
             string id = STOCK_ID;
             string cht_cat = CHT_CAT;
 
-            string date = "/html/body/table[2]/tbody/tr/td[3]/table[1]/tbody/tr/td[1]/table/tbody/tr[1]/th/table/tbody/tr/td[2]/nobr";
+            string date = "/html/body/table[2]/tbody/tr/td[3]/table[1]/tbody/tr/td[1]/table/tbody/tr[1]/th/table/tbody/tr/td[last()]/nobr";
             date = doc.DocumentNode.SelectSingleNode(date.Replace("/tbody", "")).InnerText.ToString();
 
             string volume = "/html/body/table[2]/tbody/tr/td[3]/table[1]/tbody/tr/td[1]/table/tbody/tr[5]/td[1]";
