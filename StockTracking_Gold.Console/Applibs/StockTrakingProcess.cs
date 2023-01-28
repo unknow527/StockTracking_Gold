@@ -10,22 +10,27 @@ namespace StockTracking_Gold.Ap.Applibs
 {
     internal class StockTrakingProcess
     {
-        private StockCrawler stockCrawler;
+        private IStockCrawler stockCrawler;
         private List<StockInfo> stockInfos = new List<StockInfo>();
 
         // 建構子：new StockTrakingProcess()時會先執行
         // 建立StockTrakingProcess()物件時，同時建立StockCrawler()物件。
         public StockTrakingProcess()
         {
-            stockCrawler = new StockCrawler(new System.Net.WebClient());
+            //stockCrawler = new StockCrawler(new System.Net.WebClient());
+
+            // 1. 使用Selenium
+            stockCrawler = new StockCrawler_Selenium();
+            // 2. 使用WebClient (目前在pbr per解析會有異常，待修復)
+            //stockCrawler = new StockCrawler_WebClient(new System.Net.WebClient());
         }
 
         //public void StartStockCrawler
-        public List<StockViewModelDto> StartStockCrawler(string market = "TSE", string onTime = "N", int gap = 2)
+        public List<StockViewModelDtoV2> StartStockCrawler(string market = "TSE", string onTime = "N", int gap = 4)
         {
             TimeSpan timeSpan;
             DateTime start_time = DateTime.Now;
-            List<StockViewModelDto> dtoList = new List<StockViewModelDto>();
+            List<StockViewModelDtoV2> dtoList = new List<StockViewModelDtoV2>();
 
             try
             {
@@ -33,7 +38,7 @@ namespace StockTracking_Gold.Ap.Applibs
                 var goldList = stockCrawler.Get_GoldenCrossList(market).Where(o => o.Code.Length == 4).Take(3).ToList();
                 //var goldList = stockCrawler.Get_GoldenCrossList(market).Where(o => o.Code.Length == 4).ToList();
                 //var estimatedTime = (StockList.Count() / 2.5).ToString("0.00"); //預估時間
-
+            
                 // 2.1. onTime == "Y" // 即時更新才抓河流圖的本淨比&本益比。
                 if (onTime == "Y")
                 {
@@ -52,82 +57,21 @@ namespace StockTracking_Gold.Ap.Applibs
                     //Console.Write(JsonConvert.SerializeObject(stockInfos, Formatting.Indented));
                     //Console.WriteLine("------------------------------------------------");
 
-                    // 填入要回傳的資料ViewModel
+                    // 1. foreach填入要回傳的資料ViewModel (use automapper)
                     foreach (var item in stockInfos)
                     {
-                        dtoList.Add(new StockViewModelDto
-                        {
-                            黃金交叉Dto = new 黃金交叉Dto
-                            {
-                                Date = item.Gold.Date,
-                                Market = item.Gold.Market,
-                                Code = item.Gold.Code,
-                                Name = item.Gold.Name,
-                                Price = item.Gold.Price,
-                                MA5 = item.Gold.MA5,
-                                MA20 = item.Gold.MA20,
-                                MA60 = item.Gold.MA60,
-                                MA120 = item.Gold.MA120,
-                                Indicators = item.Gold.Indicators
-                            },
-                            本益比本淨比河流Dto = new 本益比本淨比河流Dto
-                            {
-                                //pbr
-                                FlowDate = item.Pbr.Date,
-                                Transaction = item.Pbr.Transaction,
-                                Volume = item.Pbr.Volume,
-                                Total_amount = item.Pbr.Total_amount,
-                                Url = item.Pbr.url,
-
-                                Bps = item.Pbr.Price,
-                                PbrLevel = item.Pbr.Flow_Level,
-                                //per
-                                Eps = item.Per.Eps_price,
-                                PerLevel = item.Per.Flow_Level
-                            }
-                        });
+                        dtoList.Add(AutoMapperConfig.Mapper.Map<StockViewModelDtoV2>(item));
                     }
-                    /**
-                    // 填入要回傳的資料ViewModel(寫法2 linq)，同foreach用法 
-                    List<StockViewModelDto> dtoList = stockInfos.Select(o => new StockViewModelDto
-                    {
-                        黃金交叉Dto = new 黃金交叉Dto
-                        {
-                            Code = o.Gold.Code,
-                            Date = o.Gold.Date,
-                            Indicators = o.Gold.Indicators,
-                            MA120 = o.Gold.Indicators
-                        },
-                        本益比本淨比河流Dto = new 本益比本淨比河流Dto
-                        {
-                            Eps = o.Per.Eps_price,
-                            PerLevel = o.Per.Flow_Level
-                        }
-                    }).ToList();
-                    //List<StockViewModelDto> dtoList = new List<StockViewModelDto>();
-                    **/
+                    // 2. linq寫法
+                    //dtoList = stockInfos.Select(o => AutoMapperConfig.Mapper.Map<StockViewModelDtoV2>(o)).ToList();
+
                 }
                 // 2.2. onTime == "N" // 不抓河流圖，直接將Gold填入要回傳的資料ViewModel。
                 else
                 {
                     foreach (var item in goldList)
                     {
-                        dtoList.Add(new StockViewModelDto
-                        {
-                            黃金交叉Dto = new 黃金交叉Dto
-                            {
-                                Date = item.Date,
-                                Market = item.Market,
-                                Code = item.Code,
-                                Name = item.Name,
-                                Price = item.Price,
-                                MA5 = item.MA5,
-                                MA20 = item.MA20,
-                                MA60 = item.MA60,
-                                MA120 = item.MA120,
-                                Indicators = item.Indicators
-                            },
-                        });
+                        dtoList.Add(AutoMapperConfig.Mapper.Map<StockViewModelDtoV2>(item));
                     }
                 }
 
@@ -149,8 +93,6 @@ namespace StockTracking_Gold.Ap.Applibs
 
                 // 關閉瀏覽器
                 stockCrawler.Dispose();
-                // 輸出結果
-                //Console.Write(JsonConvert.SerializeObject(dtoList, Formatting.Indented));
                 return dtoList;
             }
         }

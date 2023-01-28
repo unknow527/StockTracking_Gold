@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.1.32328.378
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.2092
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockTracking_Gold.Console", "StockTracking_Gold.Console\StockTracking_Gold.Console.csproj", "{2B3BB472-A047-4F55-BF9E-555A2F594818}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockTracking_Gold.Ap", "StockTracking_Gold.Console\StockTracking_Gold.Ap.csproj", "{2B3BB472-A047-4F55-BF9E-555A2F594818}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockTracking_Gold.Test", "StockTracking_Gold.Test\StockTracking_Gold.Test.csproj", "{82673819-5303-4FA4-857F-3FDC71FFB8DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{2B3BB472-A047-4F55-BF9E-555A2F594818}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B3BB472-A047-4F55-BF9E-555A2F594818}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B3BB472-A047-4F55-BF9E-555A2F594818}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82673819-5303-4FA4-857F-3FDC71FFB8DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82673819-5303-4FA4-857F-3FDC71FFB8DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82673819-5303-4FA4-857F-3FDC71FFB8DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82673819-5303-4FA4-857F-3FDC71FFB8DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
