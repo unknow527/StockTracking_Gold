@@ -22,7 +22,7 @@ namespace prjStockTracking.Crawler
         }
 
         //public void StartStockCrawler
-        public List<StockViewModel> StartStockCrawler(string market = "TSE", string onTime = "N", int gap = 2)
+        public List<StockViewModel> StartStockCrawler(string market = "TSE", string onTime = "N", int gap = 4)
         {
             List<StockViewModel> dtoList = new List<StockViewModel>();
             try
@@ -53,33 +53,36 @@ namespace prjStockTracking.Crawler
                     // 填入要回傳的資料ViewModel
                     foreach (var item in stockInfos)
                     {
-                        dtoList.Add(new StockViewModel
-                        {
-                            //1.黃金交叉
-                            Date = item.Gold.Date,
-                            Market = item.Gold.Market,
-                            Code = item.Gold.Code,
-                            Name = item.Gold.Name,
-                            Price = item.Gold.Price,
-                            MA5 = item.Gold.MA5,
-                            MA20 = item.Gold.MA20,
-                            MA60 = item.Gold.MA60,
-                            MA120 = item.Gold.MA120,
-                            Indicators = item.Gold.Indicators,
-                            //2.本益比本淨比河流
-                            //pbr
-                            FlowDate = item.Pbr.Date,
-                            Transaction = item.Pbr.Transaction,
-                            Volume = item.Pbr.Volume,
-                            Total_amount = item.Pbr.Total_amount,
-                            Url = item.Pbr.url,
+                        //黃金交叉+本益比本淨比河流
+                        dtoList.Add(AutoMapperConfig.Mapper.Map<StockViewModel>(item));
 
-                            Bps = item.Pbr.Price,
-                            PbrLevel = item.Pbr.Flow_Level,
-                            //per
-                            Eps = item.Per.Eps_price,
-                            PerLevel = item.Per.Flow_Level
-                        });
+                        //dtoList.Add(new StockViewModel
+                        //{
+                        //    //1.黃金交叉
+                        //    Date = item.Gold.Date,
+                        //    Market = item.Gold.Market,
+                        //    Code = item.Gold.Code,
+                        //    Name = item.Gold.Name,
+                        //    Price = item.Gold.Price,
+                        //    MA5 = item.Gold.MA5,
+                        //    MA20 = item.Gold.MA20,
+                        //    MA60 = item.Gold.MA60,
+                        //    MA120 = item.Gold.MA120,
+                        //    Indicators = item.Gold.Indicators,
+                        //    //2.本益比本淨比河流
+                        //    //pbr
+                        //    FlowDate = item.Pbr.Date,
+                        //    Transaction = item.Pbr.Transaction,
+                        //    Volume = item.Pbr.Volume,
+                        //    Total_amount = item.Pbr.Total_amount,
+                        //    Url = item.Pbr.url,
+
+                        //    Bps = item.Pbr.Price,
+                        //    PbrLevel = item.Pbr.Flow_Level,
+                        //    //per
+                        //    Eps = item.Per.Eps_price,
+                        //    PerLevel = item.Per.Flow_Level
+                        //});
                     }
                 }
                 // 2.2. onTime == "N" // 不抓河流圖，直接將Gold填入要回傳的資料ViewModel。
@@ -87,20 +90,23 @@ namespace prjStockTracking.Crawler
                 {
                     foreach (var item in goldList)
                     {
-                        dtoList.Add(new StockViewModel
-                        {
-                            //黃金交叉
-                            Date = item.Date,
-                            Market = item.Market,
-                            Code = item.Code,
-                            Name = item.Name,
-                            Price = item.Price,
-                            MA5 = item.MA5,
-                            MA20 = item.MA20,
-                            MA60 = item.MA60,
-                            MA120 = item.MA120,
-                            Indicators = item.Indicators
-                        });
+                        //黃金交叉
+                        dtoList.Add(AutoMapperConfig.Mapper.Map<StockViewModel>(item));
+
+                        //dtoList.Add(new StockViewModel
+                        //{
+                        //    //黃金交叉
+                        //    Date = item.Date,
+                        //    Market = item.Market,
+                        //    Code = item.Code,
+                        //    Name = item.Name,
+                        //    Price = item.Price,
+                        //    MA5 = item.MA5,
+                        //    MA20 = item.MA20,
+                        //    MA60 = item.MA60,
+                        //    MA120 = item.MA120,
+                        //    Indicators = item.Indicators
+                        //});
                     }
                 }
                 // 3.關閉瀏覽器
@@ -113,7 +119,7 @@ namespace prjStockTracking.Crawler
             {
                 // 關閉瀏覽器
                 stockCrawler.Dispose();
-                // 輸出結果
+                // 輸出結果s
                 //Console.Write(JsonConvert.SerializeObject(dtoList, Formatting.Indented));
                 return dtoList;
             }
